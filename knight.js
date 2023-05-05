@@ -2,7 +2,7 @@ const squareReg = new Map();
 
 const ChessSquare = (x, y) => {
     const xPos = x;
-    const yPos = y;
+    const yPos = y;   
     let predecessor;
 
     const possibleKnightMoves = [
@@ -39,6 +39,11 @@ const ChessSquare = (x, y) => {
 
 const knightMoves = (arrStart, arrEnd) => {
     squareReg.clear();
+
+    if(arrStart.some(el => el < 0 || el > 7) || arrEnd.some(el => el < 0 || el > 7)) {
+        console.log(`Please enter only values between 0 and 7.`);
+        return;
+    }
     
     const origin = ChessSquare(...arrStart);
     const target = ChessSquare(...arrEnd);
